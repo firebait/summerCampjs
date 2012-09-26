@@ -20,6 +20,11 @@
 
         <div class="container">
 
+            <div id="menu"></div>
+
+            <div id="course">
+            </div>
+
             <footer>
                 <p>&copy; Trisfera 2012</p>
             </footer>
@@ -30,10 +35,13 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/popcorn-complete.min.js"></script>
+        <script src="js/vendor/underscore-min.js"></script>
 
         <script src="js/main.js"></script>
         <script type="text/javascript">
             var summerCamp = new SummerCamp();
+            $("#menu").html(summerCamp.render('menu.html', summerCamp.menu));
         </script>
     </body>
 </html>

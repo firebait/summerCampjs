@@ -1,0 +1,17 @@
+{
+	module:{
+		name: 'Primer Modulo',
+		description: 'lorem ipsum',
+		config: '/cursos/primer_modulo.json'
+	},
+	module:{
+		name: 'Segundo Modulo',
+		description: 'lorem ipsum',
+		config: '/cursos/segundo_modulo.json'
+	},
+	module:{
+		name: 'Tercer Modulo',
+		description: 'lorem ipsum',
+		config: '/cursos/tercer_modulo.json'
+	}
+}

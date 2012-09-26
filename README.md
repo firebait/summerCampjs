@@ -49,9 +49,22 @@ Para inicial la applicacion se utiliza el siguente codigo.
 
 Se definen los contendores de los elementos y en el caso que no se definan los que se muestran en el snippet son los que estan por default.
 
+Servidor: Rack
+--------------
+
 Escribi un servidor rack stand alone en ruby por si no quieren montar esto en apache para servir archivos y quieren testing. Para correrlo ponen lo siguiente en el terminal.
 
 	rackup config.ru
 
+
+Servidor: Node.JS
+-----------------
+
+Como configuración alternativa del servidor (por si no quieren utilizar Ruby) pueden ejecutar un servidor estático hecho en Node.JS. Para ello, deben asegurarse de tener las siguientes librerías instaladas (pueden ejecutar `npm install {libreria}`):
+
+- http
+- url
+- path
+- fs
 
 Espero que les sirva, aunque todavia falta mucho por hacer.

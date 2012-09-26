@@ -22,7 +22,14 @@
 
             <div id="menu"></div>
 
-            <div id="course">
+            <div id="course" class="row-fluid">
+                <div id="video-container" class="span7">
+                    <div id="video">video here</div>
+                </div>
+                <div class="span4 offset1">
+                    <div id="slides">Slides here</div>
+                    <div id="code">Code here</div>
+                </div>
             </div>
 
             <footer>
@@ -40,8 +47,13 @@
 
         <script src="js/main.js"></script>
         <script type="text/javascript">
-            var summerCamp = new SummerCamp();
-            $("#menu").html(summerCamp.render('menu.html', summerCamp.menu));
+            var summerCamp = new SummerCamp({
+                menuContainer: $("#menu"),
+                videoContainer: $("#video"), 
+                slidesContainer: $("#slides"), 
+                codeContainer: $("#code") 
+            });
+            summerCamp.start();
         </script>
     </body>
 </html>

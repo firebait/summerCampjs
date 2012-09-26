@@ -1,5 +1,13 @@
-<ul class="menu">
-	<% _.each(menus, function(menu){ %>
-	<li><a href="javascript:void(0)"><%= menu.name %></a></li>
+Menu
+<ul>
+	<% _.each(options, function(menu){ %>
+	<li>
+		<h4><%= menu.name %></h4>
+		<ul>
+			<% _.each(menu.courses, function(course){ %>
+				<li><a href="javascript:void(0);" class="course" data-uid="<%= course.uid %>"><%= course.name %></a></li>
+			<% }); %>
+		</ul>
+	</li>
 	<% }); %>
 </ul>

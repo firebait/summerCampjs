@@ -4,11 +4,36 @@
 		"description": "lorem ipsum",
 		"courses": [
 			{
-
 				"uid": "001",
-				"name": "First course",
-				"video": "http://www.youtube.com/watch?v=JRfuAukYTKg"
+				"name": "Primer Curso",
+				"video": "http://www.youtube.com/watch?v=Es3huRgNaqE",
+				"code": [
+					{
+						"timestamp": 5,
+						"template": "course/module001/course001/code001.html"	
+					},
+					{
+						"timestamp": 10,
+						"template": "course/module001/course001/code002.html"	
+					}					
+				]
+			},
+			{
+				"uid": "002",
+				"name": "Segundo Curso",
+				"video": "http://www.youtube.com/watch?v=t6JgT0JR2tU",
+				"code": [
+					{
+						"timestamp": 5,
+						"template": "course/module001/course002/code001.html"	
+					},
+					{
+						"timestamp": 10,
+						"template": "course/module001/course002/code002.html"	
+					}					
+				]
 			}
+
 		]
 	},
 	{

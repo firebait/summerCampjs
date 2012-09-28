@@ -12,6 +12,7 @@
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/codemirror.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -22,14 +23,13 @@
 
             <div id="menu"></div>
 
-            <div id="course" class="row-fluid">
-                <div id="video-container" class="span7">
-                    <div id="video">video here</div>
+            <div id="course">
+                <div id="video-container">
+                    <div id="video"></div>                    
                 </div>
-                <div class="span4 offset1">
-                    <div id="slides">Slides here</div>
-                    <div id="code">Code here</div>
-                </div>
+                <iframe id="preview"></iframe>
+                <div id="code"></div>
+                <div id="slides">Slides here</div>
             </div>
 
             <footer>
@@ -43,6 +43,11 @@
 
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/popcorn-complete.min.js"></script>
+        <script src="js/vendor/codemirror.js"></script>
+        <script src="js/vendor/xml.js"></script>
+        <script src="js/vendor/javascript.js"></script>
+        <script src="js/vendor/css.js"></script>
+        <script src="js/vendor/htmlmixed.js"></script>
         <script src="js/vendor/underscore-min.js"></script>
 
         <script src="js/main.js"></script>
@@ -51,7 +56,8 @@
                 menuContainer: $("#menu"),
                 videoContainer: $("#video"), 
                 slidesContainer: $("#slides"), 
-                codeContainer: $("#code") 
+                codeEditor: $("#code"),
+                previewFrame: $("#preview")
             });
             summerCamp.start();
         </script>

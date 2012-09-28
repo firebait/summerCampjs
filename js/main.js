@@ -1,9 +1,11 @@
 SummerCamp = function(options){
 	var self = this;
 	this.menuContainer = options.menuContainer || $("#menu");
+	this.video='undefined';
 	this.videoContainer = options.videoContainer || $("#video");
 	this.slidesContainer = options.slidesContainer || $("#slides");
-	this.codeContainer = options.codeContainer || $("#code");
+	this.codeEditor = options.codeContainer || $("#code");
+	this.previewFrame = options.previewFrame || $("#preview");
 
 	// Cambiar el popcorn player a youtube.
 	Popcorn.player('youtube');
@@ -24,21 +26,24 @@ SummerCamp = function(options){
 	};
 	
 	// Helper para renderizar plantillas.
-	this.render = function(element, template, options){
+	this.render = function(template, element, options){
 		template = self.getAsync(template, 'text');
 		var html = _.template(template.toString(), {options: options});
-		element.html(html);
+		if(typeof(element) != 'undefined'){element.html(html)};
+		return html;
 	};
 
 	// Iniciar Applicacion.
 	this.start = function(){
-		self.render(self.menuContainer, 'menu.html', self.menu);
+		self.render('menu.html', self.menuContainer, self.menu);
 		self.bindCourses();
 	};
 
 	// Cargar un objecto video.
 	this.loadVideo = function(url){
-		return Popcorn.youtube( this.videoContainer.get(0), url );
+		this.videoContainer.empty();
+		self.video = Popcorn.youtube( this.videoContainer.get(0), url );
+		return self.video;
 	};
 
 	// Bind Courses.
@@ -47,30 +52,57 @@ SummerCamp = function(options){
 			// Encuentra el curso.
 			var el = $(event.currentTarget);
 			var uid = el.data('uid');
-			console.log(uid);
 			_.each(self.menu, function(menuItem){
 				_.each(menuItem.courses, function(course){
-					console.log(course);
 					if(course.uid == uid){
-						console.log("course found");
-						self.loadVideo(course.video);
+						// Encontro el curso.
+						var video = self.loadVideo(course.video);
+						self.codeEditor.setValue("");
+						// Configurar cues del code Editor.
+						_.each(course.code, function(c){						
+							video.code({
+	       						start: c.timestamp,
+		       					onStart: function( options ) {
+		       						// Set el contenido del editor.
+		       						var template = self.render(c.template)
+		          					self.codeEditor.setValue(template);
+		       					}
+	     					});
+						})
 					}
 				});
 			});
-			var course = this.menu;
 		});	
 	}
-	
+
+	this.updatePreview = function(){
+	    var previewFrame = document.getElementById('preview');
+	    var preview =  self.previewFrame.get(0).contentDocument ||  self.previewFrame.get(0).contentWindow.document;
+	    preview.open();
+	    preview.write(self.codeEditor.getValue());
+	    preview.close();
+	}
 
 	// Fetch menu
 	this.menu = this.getAsync('menu.json');
+	// Crear editor de Codigo.
+	self.codeEditor = CodeMirror(self.codeEditor.get(0), {
+		value: "",
+		mode: 'text/html',
+		tabMode: 'indent',
+		lineNumbers: true,
+		onChange: function(){
+			self.updatePreview();
+		}
+	});
 
 	return {
 		menu: this.menu,
 		render: this.render,
 		start: this.start,
-		videoContainer: this.videoContainer,
+		video: this.video,
+		codeEditor: this.codeEditor,
 		slideContainer: this.slidesContainer,
-		codeContainer: this.codeContainer
+		previewFrame: this.previewFrame
 	}
 }

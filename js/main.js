@@ -75,9 +75,13 @@ SummerCamp = function(options){
 	       						start: timing.timestamp,
 		       					onStart: function( options ) {
 		       						// Set el contenido del editor.
-		       						var code = self.render(timing.code);
-		          					self.codeEditor.setValue(code);
-		          					$.deck('go', timing.slide);
+		       						if(timing.code != 'undefined'){
+		       							var code = self.render(timing.code);
+		          						self.codeEditor.setValue(code);	
+		       						}
+		       						if(timing.slide != 'undefined'){
+		       							$.deck('go', timing.slide);
+		       						}
 		       					}
 	     					});
 						})

@@ -10,14 +10,38 @@
 				"slides": "course/module001/course001/slides.html",
 				"timing": [
 					{
-						"timestamp": 5,
+						"timestamp": 27,
 						"slide": 1,
 						"code": "course/module001/course001/code001.html"
 					},
 					{
-						"timestamp": 10,
+						"timestamp": 33,
 						"slide": 2,
 						"code": "course/module001/course001/code002.html"
+					},
+					{
+						"timestamp": 52,
+						"slide": 3
+					},
+					{
+						"timestamp": 62,
+						"slide": 4
+					},
+					{
+						"timestamp": 69,
+						"slide": 6
+					},
+					{
+						"timestamp": 100,
+						"slide": 7
+					},
+					{
+						"timestamp": 106,
+						"slide": 8
+					},
+					{
+						"timestamp": 106,
+						"slide": 9
 					}
 				]
 			},

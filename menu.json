@@ -6,30 +6,36 @@
 			{
 				"uid": "001",
 				"name": "Primer Curso",
-				"video": "http://www.youtube.com/watch?v=Es3huRgNaqE",
-				"code": [
+				"video": "http://www.youtube.com/watch?v=t6JgT0JR2tU",
+				"slides": "course/module001/course001/slides.html",
+				"timing": [
 					{
 						"timestamp": 5,
-						"template": "course/module001/course001/code001.html"	
+						"slide": 1,
+						"code": "course/module001/course001/code001.html"
 					},
 					{
 						"timestamp": 10,
-						"template": "course/module001/course001/code002.html"	
-					}					
+						"slide": 2,
+						"code": "course/module001/course001/code002.html"
+					}
 				]
 			},
 			{
 				"uid": "002",
 				"name": "Segundo Curso",
-				"video": "http://www.youtube.com/watch?v=t6JgT0JR2tU",
+				"video": "http://www.youtube.com/watch?v=Es3huRgNaqE",
+				"slides": "course/module001/course002/slides.html",
 				"code": [
 					{
 						"timestamp": 5,
-						"template": "course/module001/course002/code001.html"	
+						"template": "course/module001/course002/code001.html",
+						"code": "course/module001/course002/code001.html"
 					},
 					{
 						"timestamp": 10,
-						"template": "course/module001/course002/code002.html"	
+						"template": "course/module001/course002/code002.html",
+						"code": "course/module001/course002/code002.html"
 					}					
 				]
 			}

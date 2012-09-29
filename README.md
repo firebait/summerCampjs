@@ -1,3 +1,6 @@
+SummerCampJS
+------------
+
 Esta applicacion esta hecha para el Summer Camp 2 de Trisfera.
 
 Para configurar la applicacion hay un archivo que se llama menu.json en el root de la applicacion.
@@ -11,19 +14,28 @@ Este achivo tiene el siguiente formato:
 			"courses": [
 				{
 					"uid": "001",
-					"name": "First course",
-					"video": "http://www.youtube.com/watch?v=JRfuAukYTKg"
+					"name": "Primer Curso",
+					"video": "http://www.youtube.com/watch?v=t6JgT0JR2tU",
+					"slides": "course/module001/course001/slides.html",
+					"timing": [
+						{
+							"timestamp": 5,
+							"slide": 1,
+							"code": "course/module001/course001/code001.html"
+						},
+						{
+							"timestamp": 10,
+							"slide": 2,
+							"code": "course/module001/course001/code002.html"
+						}
+					]
 				}
 			]
 		},
 		{
 			"name": "Segundo Modulo",
 			"description": "lorem ipsum"
-		},
-		{
-			"name": "Tercer Modulo",
-			"description": "lorem ipsum"
-		}		
+		}	
 	]
 
 Esto significa que hay tres modulos y el primero tiene un curso llamado "First Course".
@@ -34,7 +46,8 @@ Esta plantilla solo require un link con las siguiente especificacion de la clase
 
 	<a href="javascript:void(0);" class="course" data-uid="001">First course</a>
 
-
+Iniciar Applicacion
+-------------------
 
 Para inicial la applicacion se utiliza el siguente codigo.
 

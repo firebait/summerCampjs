@@ -2,6 +2,7 @@ SummerCamp = function(options){
 	var self = this;
 	this.menuContainer = options.menuContainer || $("#menu");
 	this.video='undefined';
+	this.slides='undefined';
 	this.videoContainer = options.videoContainer || $("#video");
 	this.slidesContainer = options.slidesContainer || $("#slides");
 	this.codeEditor = options.codeContainer || $("#code");
@@ -46,6 +47,15 @@ SummerCamp = function(options){
 		return self.video;
 	};
 
+	// Cargar Slides.
+	this.loadSlides = function(url){
+		this.slidesContainer.empty();
+		var slides = self.getAsync(url, 'html');
+		this.slidesContainer.html(slides);
+		self.slides = $.deck('.slide');
+		return self.slides;
+	}
+
 	// Bind Courses.
 	this.bindCourses = function(){
 		self.menuContainer.on('click', ".course", function(event){
@@ -56,16 +66,18 @@ SummerCamp = function(options){
 				_.each(menuItem.courses, function(course){
 					if(course.uid == uid){
 						// Encontro el curso.
-						var video = self.loadVideo(course.video);
+						self.video = self.loadVideo(course.video);
+						self.slides = self.loadSlides(course.slides);
 						self.codeEditor.setValue("");
 						// Configurar cues del code Editor.
-						_.each(course.code, function(c){						
-							video.code({
-	       						start: c.timestamp,
+						_.each(course.timing, function(timing){						
+							self.video.code({
+	       						start: timing.timestamp,
 		       					onStart: function( options ) {
 		       						// Set el contenido del editor.
-		       						var template = self.render(c.template)
-		          					self.codeEditor.setValue(template);
+		       						var code = self.render(timing.code);
+		          					self.codeEditor.setValue(code);
+		          					$.deck('go', timing.slide);
 		       					}
 	     					});
 						})
@@ -86,7 +98,7 @@ SummerCamp = function(options){
 	// Fetch menu
 	this.menu = this.getAsync('menu.json');
 	// Crear editor de Codigo.
-	self.codeEditor = CodeMirror(self.codeEditor.get(0), {
+	this.codeEditor = CodeMirror(this.codeEditor.get(0), {
 		value: "",
 		mode: 'text/html',
 		tabMode: 'indent',

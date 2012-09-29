@@ -53,7 +53,9 @@ Para mantener sincronia entre el video, los slides y el codigo se configura el o
 	}
 
 __Timestap:__ Tiempo en segundos en el que se debe ejecutar los eventos.
+
 __Slide:__ El indice del slide que debe presentarse en ese momento.
+
 __Code:__ URL que contiene el html del codigo a presentar.	
 
 El menu de la applicacion puede ser modificado modificando la plantilla llamada "menu.html".
